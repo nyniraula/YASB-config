@@ -1,0 +1,632 @@
+/* Base styles and Typography */
+* {
+    font-family: "Inter", "Segoe UI Variable Display", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.yasb-bar {
+    background-color: rgba(6, 6, 8, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Icons */
+.icon,
+.power-menu-widget .label,
+.quick-launch-widget .label,
+.apps-widget .label {
+    font-family: "Segoe Fluent Icons", "Segoe UI Symbol";
+    font-size: 13px;
+    margin-right: 4px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: normal;
+}
+
+/* Container grouping */
+.container-left,
+.container-center,
+.container-right {
+    padding: 0;
+}
+
+/* Generic widget container */
+.widget-container {
+    padding: 0 12px;
+    margin: 0;
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+}
+
+.widget-container:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.label {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center Section */
+.clock-widget .label {
+    font-weight: 800;
+    color: #ffffff;
+}
+
+/* Home Widget */
+.home-widget .windows-icon {
+    color: #3cc3ff;
+    /* Windows 11 Blue */
+    font-family: "JetBrainsMono Nerd Font Propo", "FontAwesome", sans-serif;
+    font-size: 15px;
+    padding-right: 3px;
+    display: inline-block;
+}
+
+.home-widget .widget-container:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 2px solid #0078d4;
+}
+
+/* Active Window */
+.active-window-widget .widget-container {
+    max-width: 300px;
+}
+
+.active-window-widget .icon {
+    margin-right: 8px;
+}
+
+/* ─── Home Menu ─── */
+.home-menu {
+    background-color: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 0,
+        y2: 1,
+        stop: 0 rgba(255, 255, 255, 0.07),
+        stop: 1 rgba(255, 255, 255, 0.02)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 10px 8px;
+    min-width: 130px;
+}
+
+.home-menu .menu-item {
+    padding: 11px 40px 11px 16px;
+    font-size: 12px;
+    font-family: "Segoe UI Variable Display", "Inter", sans-serif;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    border-radius: 8px;
+    margin: 1px 4px;
+    border-left: 3px solid transparent;
+}
+
+.home-menu .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-left: 3px solid rgba(76, 194, 255, 0.7);
+    color: #fff;
+}
+
+.home-menu .separator {
+    margin: 6px 16px;
+    max-height: 1px;
+    background-color: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 0,
+        stop: 0 rgba(255, 255, 255, 0),
+        stop: 0.5 rgba(255, 255, 255, 0.12),
+        stop: 1 rgba(255, 255, 255, 0)
+    );
+}
+
+/* Right Section Typographic Alignments */
+.brightness-widget .label,
+.volume-widget .label,
+.battery-widget .label {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ─── Popups Unified Style ─── */
+.power-menu-compact,
+.wifi-menu,
+.audio-menu,
+.microphone-menu,
+.systray-popup,
+.brightness-menu,
+.clock-popup.calendar {
+    background-color: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 0,
+        y2: 1,
+        stop: 0 rgba(255, 255, 255, 0.07),
+        stop: 1 rgba(255, 255, 255, 0.02)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.power-menu-compact .buttons {
+    background-color: transparent;
+}
+
+.power-menu-compact .button.hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* ─── WiFi Menu ─── */
+.wifi-menu .header,
+.wifi-menu .footer {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.wifi-menu .wifi-list {
+    background-color: transparent;
+}
+
+.wifi-menu .wifi-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+}
+
+/* ─── Audio Menu ─── */
+.audio-menu {
+    min-width: 320px;
+}
+
+.audio-menu .audio-container .device {
+    padding: 10px 16px;
+    margin-bottom: 3px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 3px solid transparent;
+}
+
+.audio-menu .audio-container .device.selected {
+    background-color: rgba(76, 194, 255, 0.08);
+    border-left: 3px solid #4cc2ff;
+    color: #fff;
+    font-weight: 600;
+}
+
+.audio-menu .audio-container .device:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.audio-menu .audio-container .slider-container {
+    padding: 14px 8px 10px 8px;
+}
+
+/* Volume App Mixer */
+.audio-menu .toggle-apps {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+    min-height: 24px;
+    min-width: 24px;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.audio-menu .toggle-apps.expanded {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.audio-menu .toggle-apps:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.audio-menu .apps-container {
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.audio-menu .apps-container .app-volume .app-icon-container {
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    border-radius: 6px;
+    margin-right: 8px;
+}
+
+.audio-menu .apps-container .app-volume .app-icon-container:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Microphone Menu ─── */
+.microphone-menu {
+    min-width: 300px;
+}
+
+.microphone-menu .microphone-container .device {
+    padding: 10px 16px;
+    margin-bottom: 3px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 3px solid transparent;
+}
+
+.microphone-menu .microphone-container .device.selected {
+    background-color: rgba(76, 194, 255, 0.08);
+    border-left: 3px solid #4cc2ff;
+    color: #fff;
+    font-weight: 600;
+}
+
+.microphone-menu .microphone-container .device:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Brightness Slider ─── */
+.brightness-menu .brightness-slider {
+    border: none;
+    background-color: transparent;
+}
+
+/* Tooltip */
+QToolTip {
+    background-color: rgba(18, 18, 20, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Taskbar Widget */
+.taskbar-widget .widget-container {
+    padding: 0;
+    /* Remove padding to let apps use full height */
+}
+
+.taskbar-widget .widget-container:hover {
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
+}
+
+.taskbar-widget .app-container {
+    padding: 4px 8px;
+    margin: 0;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+}
+
+.taskbar-widget .app-container:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.taskbar-widget .app-container.foreground {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-bottom: 2px solid #4d94ff;
+    /* Distinct blue baseline */
+}
+
+.taskbar-widget .app-container.foreground:hover {
+    border-bottom: 2px solid #80b3ff;
+}
+
+.taskbar-widget .app-container.running {
+    background-color: transparent;
+}
+
+/* Taskbar Preview Popup */
+.taskbar-preview {
+    border-radius: 10px;
+    background-color: rgba(18, 18, 22, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.taskbar-preview.flashing {
+    background-color: rgba(140, 40, 50, 0.9);
+}
+
+.taskbar-preview .header {
+    padding-bottom: 10px;
+    padding-top: 4px;
+}
+
+.taskbar-preview .header .title {
+    color: rgba(255, 255, 255, 0.85);
+    font-family: "Segoe UI", "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.taskbar-preview .close-button {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    min-width: 20px;
+    border-radius: 4px;
+    min-height: 20px;
+}
+
+.taskbar-preview .close-button:hover {
+    color: #fff;
+    background-color: rgba(220, 40, 40, 0.9);
+}
+
+/* Media Widget */
+.media-widget {
+    margin-left: 24px;
+    border-radius: 4px;
+}
+
+.media-widget .widget-container:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.media-widget .label {
+    margin: 0 8px;
+}
+
+.media-widget .btn {
+    font-family: "Segoe Fluent Icons", "Segoe UI Symbol";
+    font-size: 13px;
+    margin: 0 4px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.media-widget .btn:hover {
+    color: #fff;
+}
+
+/* System Grouper */
+.system-grouper .container {
+    background-color: transparent;
+    border: none;
+    margin: 0 16px 0 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.system-grouper .widget-container {
+    padding: 0 4px;
+    margin: 0;
+}
+
+.system-grouper .icon {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+}
+
+.system-grouper .microphone-widget .icon {
+    font-family: "FontAwesome", "JetBrainsMono Nerd Font Propo";
+}
+
+/* Notifications Widget */
+.notification-widget {
+    padding: 0 4px 0 4px;
+    margin-left: 2px;
+}
+
+.notification-widget .icon {
+    font-size: 16px;
+}
+
+.notification-widget .icon.new-notification,
+.notification-widget .label.new-notification {
+    color: #ffffff;
+}
+
+/* Systray Widget */
+.systray {
+    background: transparent;
+    border: none;
+    margin: 0;
+}
+
+.systray .button {
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.systray .button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.systray .unpinned-visibility-btn {
+    border-radius: 4px;
+    height: 20px;
+    width: 16px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.systray .unpinned-visibility-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.systray-popup {
+    padding: 6px;
+}
+
+.systray-popup .button {
+    padding: 8px;
+    margin: 2px;
+    border: 0;
+    border-radius: 6px;
+}
+
+.systray-popup .button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Media Menu (Expanded) */
+.media-menu {
+    background-color: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 1,
+        stop: 0 rgba(255, 255, 255, 0.06),
+        stop: 1 rgba(255, 255, 255, 0.01)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    min-width: 400px;
+    padding: 12px;
+}
+
+.media-menu .title,
+.media-menu .artist {
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 12px;
+    font-family: "Inter", sans-serif;
+}
+
+.media-menu .artist {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+}
+
+.media-menu .btn {
+    font-family: "Segoe Fluent Icons", "Segoe UI Symbol";
+    font-size: 18px;
+    background-color: transparent;
+    border-radius: 50%;
+    margin: 4px;
+    padding: 8px;
+}
+
+.media-menu .btn.play,
+.media-menu .btn.pause {
+    font-size: 22px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.media-menu .btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ─── Volume & Mic Slider Styling ─── */
+.audio-menu .audio-container .volume-slider,
+.audio-menu .apps-container .app-volume .app-slider,
+.microphone-menu .system-volume-container .volume-slider {
+    border: none;
+    background-color: transparent;
+}
+
+.audio-menu .audio-container .volume-slider::groove:horizontal,
+.audio-menu .apps-container .app-volume .app-slider::groove:horizontal,
+.microphone-menu .system-volume-container .volume-slider::groove:horizontal {
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+}
+
+.audio-menu .audio-container .volume-slider::handle:horizontal,
+.audio-menu .apps-container .app-volume .app-slider::handle:horizontal,
+.microphone-menu .system-volume-container .volume-slider::handle:horizontal {
+    width: 14px;
+    height: 14px;
+    margin: -5px 0;
+    background-color: #fff;
+    border-radius: 7px;
+    border: none;
+}
+
+.audio-menu .audio-container .volume-slider::sub-page:horizontal,
+.audio-menu .apps-container .app-volume .app-slider::sub-page:horizontal,
+.microphone-menu .system-volume-container .volume-slider::sub-page:horizontal {
+    background-color: #4cc2ff;
+    border-radius: 2px;
+    height: 4px;
+}
+
+/* ─── Calendar Popup ─── */
+.clock-popup.calendar {
+    min-width: 340px;
+    padding: 14px;
+}
+
+.clock-popup.calendar .calendar-table,
+.clock-popup.calendar .calendar-table::item {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: "Segoe UI Variable Display", "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.clock-popup.calendar .calendar-table::item:selected {
+    color: rgba(10, 10, 14, 0.95);
+    font-weight: 700;
+    background-color: #4cc2ff;
+    border-radius: 12px;
+}
+
+.clock-popup.calendar .day-label {
+    margin-top: 16px;
+}
+
+.clock-popup.calendar .day-label,
+.clock-popup.calendar .month-label,
+.clock-popup.calendar .year-label,
+.clock-popup.calendar .date-label {
+    font-family: "Segoe UI Variable Display", "Inter", sans-serif;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.clock-popup.calendar .month-label {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.clock-popup.calendar .year-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.clock-popup.calendar .week-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+}
+
+.clock-popup.calendar .holiday-label {
+    font-size: 11px;
+    color: #ff7a7a;
+    font-weight: 600;
+}
+
+.gap {
+    height: 2px;
+    width: 0px;
+}

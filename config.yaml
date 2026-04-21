@@ -1,0 +1,263 @@
+watch_stylesheet: true
+watch_config: true
+show_systray: true
+
+bars:
+  taskbar:
+    enabled: true
+    screens: ["*"]
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      align: "center"
+    blur_effect:
+      enabled: true
+      acrylic: true
+      dark_mode: true
+    window_flags:
+      always_on_top: true
+      windows_app_bar: true
+      hide_on_fullscreen: true
+    dimensions:
+      width: "100%"
+      height: 30
+    padding:
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+    widgets:
+      left: ["home", "media", "taskbar"]
+      center: ["active_window"]
+      right: ["systray", "system-grouper", "clock", "notifications"]
+
+widgets:
+  home:
+    type: "yasb.home.HomeWidget"
+    options:
+      label: "<span class='windows-icon'>\ue8e5</span>"
+      menu_list:
+        - { title: "Terminal", command: "wt.exe", show_window: true }
+        - { title: "Settings", uri: "ms-settings:" }
+        - { separator: true }
+        - { title: "Downloads", path: "C:\\Users\\Val\\Downloads" }
+        - { title: "Documents", path: "C:\\Users\\Val\\Documents" }
+        - { separator: true }
+        - { title: "Task Manager", command: "taskmgr" }
+        - { title: "Lock", command: "rundll32.exe user32.dll,LockWorkStation" }
+        - {
+            title: "Sleep",
+            command: "rundll32.exe powrprof.dll,SetSuspendState 0,1,0",
+          }
+      system_menu: false
+      power_menu: false
+      blur: true
+      round_corners: true
+      border_color: "System"
+      alignment: "left"
+      direction: "down"
+      offset_top: 2
+
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[title]}"
+      label_alt: "{win[title]}"
+      label_no_window: ""
+      label_icon: true
+      label_icon_size: 14
+      max_length: 42
+      max_length_ellipsis: "…"
+      animation: { "enabled": true, "type": "fadeInOut", "duration": 200 }
+      rewrite:
+        - pattern: "^Task Switching$"
+          replacement: ""
+
+  taskbar:
+    type: "yasb.taskbar.TaskbarWidget"
+    options:
+      icon_size: 16
+      tooltip: false
+      show_only_visible: false
+      strict_filtering: true
+      preview:
+        enabled: true
+        width: 240
+        delay: 300
+        padding: 8
+        margin: 6
+      title_label:
+        enabled: false
+
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "{title}   -   {artist}"
+      label_alt: "{title}"
+      separator: " - "
+      hide_empty: true
+      callbacks:
+        on_left: "toggle_media_menu"
+      max_field_size:
+        label: 25
+      show_thumbnail: true
+      thumbnail_alpha: 100
+      controls_left: true
+      controls_hide: false
+      scrolling_label:
+        enabled: true
+        update_interval_ms: 33
+        style: "left"
+        label_padding: 2
+      icons:
+        prev_track: "\ue892"
+        next_track: "\ue893"
+        play: "\ue768"
+        pause: "\ue769"
+      
+      media_menu:
+        blur: true
+        round_corners: true
+        border_color: "None"
+        alignment: "center"
+        direction: "down"
+        offset_top: 2
+        offset_left: 0
+        
+      media_menu_icons:
+        play: "\ue768"
+        pause: "\ue769"
+        prev_track: "\ue892"
+        next_track: "\ue893"
+
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%A, %d %B   •   %H:%M}"
+      tooltip: true
+      calendar:
+        blur: true
+        round_corners: true
+        border_color: "None"
+        alignment: "center"
+        direction: "down"
+        offset_top: 2
+
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "<span>{wifi_icon}</span>"
+      label_alt: "{wifi_name}"
+      callbacks:
+        on_left: "exec explorer.exe ms-availablenetworks:"
+        on_middle: "toggle_label"
+        on_right: "exec explorer.exe ms-controlcenter:"
+      wifi_icons:
+        [
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/no_wifi.svg' width='16' height='16'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='16' height='16'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='16' height='16'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='16' height='16'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='16' height='16'>",
+        ]
+      menu_config:
+        blur: true
+        round_corners: true
+        alignment: "right"
+        direction: "down"
+        offset_top: 2
+
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "{level}"
+      tooltip: true
+      volume_icons:
+        [
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_mute.svg' width='18' height='18'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_1.svg' width='18' height='18'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_1.svg' width='18' height='18'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_2.svg' width='18' height='18'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_2.svg' width='18' height='18'>",
+        ]
+      callbacks:
+        on_left: "toggle_volume_menu"
+      audio_menu:
+        blur: true
+        round_corners: true
+        alignment: "right"
+        direction: "down"
+        offset_top: 2
+
+  mic:
+    type: "yasb.microphone.MicrophoneWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "{level}"
+      tooltip: true
+      icons:
+        normal: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/mic_on.svg' width='18' height='16'>"
+        muted: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/mic_off.svg' width='18' height='16'>"
+      callbacks:
+        on_left: "toggle_mic_menu"
+      mic_menu:
+        blur: true
+        round_corners: true
+        alignment: "right"
+        direction: "down"
+        offset_top: 2
+
+  battery:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "{percent}%"
+      charging_options:
+        icon_format: "{charging_icon}"
+        blink_charging_icon: false
+      status_icons:
+        icon_charging: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_charging.svg'  width='18' height='18'>"
+
+        icon_critical: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery1.svg' width='18' height='18'>"
+        icon_low: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery1.svg' width='18' height='18'>"
+        icon_medium: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery2.svg' width='18' height='18'>"
+        icon_high: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery2.svg' width='18' height='18'>"
+        icon_full: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_full.svg' width='18' height='18'>"
+
+  system-grouper:
+    type: "yasb.grouper.GrouperWidget"
+    options:
+      class_name: "system-grouper"
+      widgets: ["wifi", "volume", "mic", "battery"]
+      collapse_options:
+        enabled: false
+
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "<span>{icon}</span>"
+      icons:
+        new: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/notification.svg' width='16' height='16'>"
+        default: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/notification.svg' width='16' height='16'>"
+      hide_empty: true
+      tooltip: false
+      callbacks:
+        on_left: "toggle_notification"
+
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
+      icon_size: 14
+      show_unpinned: false
+      show_in_popup: true
+      label_position: "right"
+      label_collapsed: "▾"
+      label_expanded: "▴"
+      popup:
+        blur: true
+        round_corners: true
+        border_color: "None"
+        alignment: "right"
+        direction: "down"
