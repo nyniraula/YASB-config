@@ -12,7 +12,7 @@ bars:
       align: "center"
     blur_effect:
       enabled: true
-      acrylic: true
+      acrylic: false
       dark_mode: true
     window_flags:
       always_on_top: true
@@ -20,16 +20,16 @@ bars:
       hide_on_fullscreen: true
     dimensions:
       width: "100%"
-      height: 30
+      height: 32
     padding:
       top: 0
       left: 0
       bottom: 0
       right: 0
     widgets:
-      left: ["home", "media", "taskbar"]
+      left: ["home", "date", "taskbar"]
       center: ["active_window"]
-      right: ["systray", "system-grouper", "clock", "notifications"]
+      right: ["media", "systray", "system-grouper", "time"]
 
 widgets:
   home:
@@ -76,10 +76,11 @@ widgets:
   taskbar:
     type: "yasb.taskbar.TaskbarWidget"
     options:
-      icon_size: 16
-      tooltip: false
+      icon_size: 18
       show_only_visible: false
       strict_filtering: true
+      hide_empty: true
+      animation: { "enabled": True, "type": "fadeInOut", "duration": 200 }
       preview:
         enabled: true
         width: 240
@@ -99,22 +100,24 @@ widgets:
       callbacks:
         on_left: "toggle_media_menu"
       max_field_size:
-        label: 25
+        label: 24
       show_thumbnail: true
       thumbnail_alpha: 100
-      controls_left: true
+      controls_left: false
       controls_hide: false
+      thumbnail_edge_fade: true
       scrolling_label:
         enabled: true
         update_interval_ms: 33
         style: "left"
         label_padding: 2
+      animation: { "enabled": true, "type": "fadeInOut", "duration": 200 }
       icons:
         prev_track: "\ue892"
         next_track: "\ue893"
         play: "\ue768"
         pause: "\ue769"
-      
+
       media_menu:
         blur: true
         round_corners: true
@@ -123,17 +126,33 @@ widgets:
         direction: "down"
         offset_top: 2
         offset_left: 0
-        
+
       media_menu_icons:
         play: "\ue768"
         pause: "\ue769"
         prev_track: "\ue892"
         next_track: "\ue893"
 
-  clock:
+  date:
     type: "yasb.clock.ClockWidget"
     options:
-      label: "{%A, %d %B   •   %H:%M}"
+      label: "{%a, %d %b}"
+      tooltip: true
+      class_name: "date"
+      calendar:
+        blur: true
+        round_corners: true
+        border_color: "None"
+        alignment: "center"
+        direction: "down"
+        offset_top: 2
+      callbacks:
+        on_left: "toggle_notification"
+
+  time:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%I:%M %p}"
       tooltip: true
       calendar:
         blur: true
@@ -142,6 +161,8 @@ widgets:
         alignment: "center"
         direction: "down"
         offset_top: 2
+      callbacks:
+        on_right: "exec explorer.exe ms-actioncenter:"
 
   wifi:
     type: "yasb.wifi.WifiWidget"
@@ -154,11 +175,11 @@ widgets:
         on_right: "exec explorer.exe ms-controlcenter:"
       wifi_icons:
         [
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/no_wifi.svg' width='16' height='16'>",
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='16' height='16'>",
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='16' height='16'>",
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='16' height='16'>",
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='16' height='16'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/no_wifi.svg' width='20' height='20'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='20' height='20'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='20' height='20'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='20' height='20'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/wifi.svg' width='20' height='20'>",
         ]
       menu_config:
         blur: true
@@ -175,11 +196,11 @@ widgets:
       tooltip: true
       volume_icons:
         [
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_mute.svg' width='18' height='18'>",
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_1.svg' width='18' height='18'>",
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_1.svg' width='18' height='18'>",
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_2.svg' width='18' height='18'>",
-          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_2.svg' width='18' height='18'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_mute.svg' width='20' height='20'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_1.svg' width='20' height='20'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_1.svg' width='20' height='20'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_2.svg' width='20' height='20'>",
+          "<img src='C:/Users/Val/.config/yasb/statusbar_icons/volume_2.svg' width='20' height='20'>",
         ]
       callbacks:
         on_left: "toggle_volume_menu"
@@ -197,8 +218,8 @@ widgets:
       label_alt: "{level}"
       tooltip: true
       icons:
-        normal: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/mic_on.svg' width='18' height='16'>"
-        muted: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/mic_off.svg' width='18' height='16'>"
+        normal: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/mic_on.svg' width='20' height='20'>"
+        muted: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/mic_off.svg' width='20' height='20'>"
       callbacks:
         on_left: "toggle_mic_menu"
       mic_menu:
@@ -217,13 +238,13 @@ widgets:
         icon_format: "{charging_icon}"
         blink_charging_icon: false
       status_icons:
-        icon_charging: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_charging.svg'  width='18' height='18'>"
+        icon_charging: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_charging.svg'  width='20' height='20'>"
 
-        icon_critical: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery1.svg' width='18' height='18'>"
-        icon_low: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery1.svg' width='18' height='18'>"
-        icon_medium: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery2.svg' width='18' height='18'>"
-        icon_high: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery2.svg' width='18' height='18'>"
-        icon_full: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_full.svg' width='18' height='18'>"
+        icon_critical: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_critical.svg' width='20' height='20'>"
+        icon_low: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_low.svg' width='20' height='20'>"
+        icon_medium: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_medium.svg' width='20' height='20'>"
+        icon_high: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_high.svg' width='20' height='20'>"
+        icon_full: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/battery_full.svg' width='20' height='20'>"
 
   system-grouper:
     type: "yasb.grouper.GrouperWidget"
@@ -232,19 +253,6 @@ widgets:
       widgets: ["wifi", "volume", "mic", "battery"]
       collapse_options:
         enabled: false
-
-  notifications:
-    type: "yasb.notifications.NotificationsWidget"
-    options:
-      label: "<span>{icon}</span>"
-      label_alt: "<span>{icon}</span>"
-      icons:
-        new: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/notification.svg' width='16' height='16'>"
-        default: "<img src='C:/Users/Val/.config/yasb/statusbar_icons/notification.svg' width='16' height='16'>"
-      hide_empty: true
-      tooltip: false
-      callbacks:
-        on_left: "toggle_notification"
 
   systray:
     type: "yasb.systray.SystrayWidget"

@@ -1,7 +1,8 @@
 /* Base styles and Typography */
 * {
-    font-family: "SF Pro Display Medium", sans-serif;
-    font-size: 11px;
+    font-family: "SF Compact Display";
+    font-family: "Segoe UI Variable";
+    font-size: 12px;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.9);
 }
@@ -64,6 +65,10 @@
     font-size: 15px;
     padding-right: 3px;
     display: inline-block;
+}
+
+.date {
+    margin-left: 16px;
 }
 
 .home-widget .widget-container:hover {
@@ -296,7 +301,8 @@ QToolTip {
 
 /* Taskbar Widget */
 .taskbar-widget {
-    margin-left: 24px;
+    margin-left: 16px;
+    margin-right: 8px;
 }
 
 .taskbar-widget .widget-container {
@@ -375,7 +381,6 @@ QToolTip {
 
 /* Media Widget */
 .media-widget {
-    margin-left: 12px;
     border-radius: 4px;
 }
 
@@ -384,9 +389,9 @@ QToolTip {
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.media-widget .label {
+/*.media-widget .label {
     margin: 0 8px;
-}
+}*/
 
 .media-widget .btn {
     font-family: "Segoe Fluent Icons", "Segoe UI Symbol";
